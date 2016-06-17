@@ -1,5 +1,5 @@
 <?php
-namespace Bithost\Fastexport\MockViewHelpers\Condition;
+namespace Bithost\PowermailFastexport\MockViewHelpers\Condition;
 
 class IsArrayViewHelper {
 

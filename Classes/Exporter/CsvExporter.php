@@ -23,10 +23,10 @@ class CsvExporter extends AbstractExporter
     {
         $output = '';
 
-        $output .= self::arrayToCsv($this->renderHeader($fieldUids),false,self::CSV_DELIMITER,self::CSV_ENCLOSURE);
+        $output .= self::arrayToCsv($this->renderHeader($fieldUids), false, self::CSV_DELIMITER, self::CSV_ENCLOSURE);
 
         foreach ($mails as $mail) {
-            $output .= self::arrayToCsv($this->renderRecord($mail, $fieldUids),false,self::CSV_DELIMITER,self::CSV_ENCLOSURE);
+            $output .= self::arrayToCsv($this->renderRecord($mail, $fieldUids), false, self::CSV_DELIMITER, self::CSV_ENCLOSURE);
         }
 
         return $output;
@@ -83,7 +83,7 @@ class CsvExporter extends AbstractExporter
      *
      * @return string
      */
-    static function arrayToCsv($array, $headerRow = true, $columnSeparator = ",", $quote = '"', $rowSeparator = "\n")
+    static function arrayToCsv(array $array, $headerRow = true, $columnSeparator = ",", $quote = '"', $rowSeparator = "\n")
     {
         $output = '';
         if (!is_array($array) or !is_array($array[0])) {

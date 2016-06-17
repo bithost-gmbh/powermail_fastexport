@@ -1,14 +1,14 @@
 <?php
 namespace Bithost\PowermailFastexport\Exporter;
 
-use Bithost\Fastexport\MockViewHelpers\Condition\IsArrayViewHelper;
-use Bithost\Fastexport\MockViewHelpers\Condition\IsDateTimeVariableInVariableViewHelper;
-use Bithost\Fastexport\MockViewHelpers\Condition\IsNumberViewHelper;
-use Bithost\Fastexport\MockViewHelpers\Format\DateViewHelper;
-use Bithost\Fastexport\MockViewHelpers\Getter\GetFieldLabelFromUidViewHelper;
-use Bithost\Fastexport\MockViewHelpers\Getter\GetPageNameFromUidViewHelper;
-use Bithost\Fastexport\MockViewHelpers\Misc\VariableInVariableViewHelper;
-use Bithost\Fastexport\MockViewHelpers\String\UnderscoredToLowerCamelCaseViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Condition\IsArrayViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Condition\IsDateTimeVariableInVariableViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Condition\IsNumberViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Format\DateViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Getter\GetFieldLabelFromUidViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Getter\GetPageNameFromUidViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\Misc\VariableInVariableViewHelper;
+use Bithost\PowermailFastexport\MockViewHelpers\String\UnderscoredToLowerCamelCaseViewHelper;
 use In2code\Powermail\Domain\Model\Answer;
 use In2code\Powermail\Utility\Div;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -68,14 +68,14 @@ abstract class AbstractExporter
 	public function __construct(ObjectManager $objectManager)
 	{
 		$this->objectManager = $objectManager;
-		$this->isNumber = GeneralUtility::makeInstance('Bithost\Fastexport\MockViewHelpers\Condition\IsNumberViewHelper');
-		$this->isArray = GeneralUtility::makeInstance('Bithost\Fastexport\MockViewHelpers\Condition\IsArrayViewHelper');
-		$this->isDateTimeVariableInVariable = GeneralUtility::makeInstance('Bithost\Fastexport\MockViewHelpers\Condition\IsDateTimeVariableInVariableViewHelper');
-		$this->date = GeneralUtility::makeInstance('Bithost\Fastexport\MockViewHelpers\Format\DateViewHelper');
-		$this->getFieldLabelFromUid = $this->objectManager->get('Bithost\Fastexport\MockViewHelpers\Getter\GetFieldLabelFromUidViewHelper');
-		$this->getPageNamerFromUid = $this->objectManager->get('Bithost\Fastexport\MockViewHelpers\Getter\GetPageNameFromUidViewHelper');
-		$this->underscoredToLowerCamelCase = GeneralUtility::makeInstance('Bithost\Fastexport\MockViewHelpers\String\UnderscoredToLowerCamelCaseViewHelper');
-		$this->variableInVariable = GeneralUtility::makeInstance('Bithost\Fastexport\MockViewHelpers\Misc\VariableInVariableViewHelper');
+		$this->isNumber = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Condition\IsNumberViewHelper');
+		$this->isArray = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Condition\IsArrayViewHelper');
+		$this->isDateTimeVariableInVariable = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Condition\IsDateTimeVariableInVariableViewHelper');
+		$this->date = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Format\DateViewHelper');
+		$this->getFieldLabelFromUid = $this->objectManager->get('Bithost\PowermailFastexport\MockViewHelpers\Getter\GetFieldLabelFromUidViewHelper');
+		$this->getPageNamerFromUid = $this->objectManager->get('Bithost\PowermailFastexport\MockViewHelpers\Getter\GetPageNameFromUidViewHelper');
+		$this->underscoredToLowerCamelCase = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\String\UnderscoredToLowerCamelCaseViewHelper');
+		$this->variableInVariable = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Misc\VariableInVariableViewHelper');
 	}
 
 	/**

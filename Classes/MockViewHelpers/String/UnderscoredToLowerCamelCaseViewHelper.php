@@ -1,5 +1,5 @@
 <?php
-namespace Bithost\Fastexport\MockViewHelpers\String;
+namespace Bithost\PowermailFastexport\MockViewHelpers\String;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Bithost\Fastexport\MockViewHelpers\Getter;
+namespace Bithost\PowermailFastexport\MockViewHelpers\Getter;
 
 class GetFieldLabelFromUidViewHelper {
     /**

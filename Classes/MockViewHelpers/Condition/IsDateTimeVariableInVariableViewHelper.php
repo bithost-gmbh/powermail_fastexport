@@ -1,5 +1,5 @@
 <?php
-namespace Bithost\Fastexport\MockViewHelpers\Condition;
+namespace Bithost\PowermailFastexport\MockViewHelpers\Condition;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;

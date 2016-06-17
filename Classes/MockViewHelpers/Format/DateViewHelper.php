@@ -1,5 +1,5 @@
 <?php
-namespace Bithost\Fastexport\MockViewHelpers\Format;
+namespace Bithost\PowermailFastexport\MockViewHelpers\Format;
 
 use TYPO3\CMS\Core\Utility\MathUtility;
 
