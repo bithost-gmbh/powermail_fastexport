@@ -24,7 +24,7 @@ Powermail FastExport
 
 	:Description:
 		Extend powermail for faster export to .xlsx / .csv files.
-This is useful if you have >100 records to be exported.
+        This is useful if you have many records to be exported.
 
 	:Keywords:
 		comma,separated,list,of,keywords
