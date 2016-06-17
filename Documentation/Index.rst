@@ -27,7 +27,7 @@ Powermail FastExport
         This is useful if you have many records to be exported.
 
 	:Keywords:
-		comma,separated,list,of,keywords
+		powermail, export, csv, xlsx
 
 	:Copyright:
 		2016
@@ -55,7 +55,6 @@ Powermail FastExport
 	:titlesonly:
 
 	Introduction/Index
-	User/Index
 	Administrator/Index
 	Configuration/Index
 	Developer/Index

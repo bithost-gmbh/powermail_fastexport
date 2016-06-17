@@ -1,7 +1,6 @@
 <?php
 namespace Bithost\PowermailFastexport\MockViewHelpers\Condition;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
 /**
@@ -15,7 +14,7 @@ class IsDateTimeVariableInVariableViewHelper {
 	/**
 	 * Is {outer.{inner}} a datetime?
 	 *
-	 * @param object $obj
+	 * @param array|object $obj
 	 * @param string $prop Property
 	 * @return bool
 	 */

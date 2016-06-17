@@ -11,6 +11,7 @@
 ChangeLog
 =========
 
-Providing a change log chapter is optional. You can also refer
-users to the ChangeLog file inside the extension or to some repository's
-commit listing.
+1.0.0 (2016-06-17)
+------------------
+
+* Initial Release

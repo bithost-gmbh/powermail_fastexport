@@ -10,7 +10,7 @@ use Bithost\PowermailFastexport\MockViewHelpers\Getter\GetPageNameFromUidViewHel
 use Bithost\PowermailFastexport\MockViewHelpers\Misc\VariableInVariableViewHelper;
 use Bithost\PowermailFastexport\MockViewHelpers\String\UnderscoredToLowerCamelCaseViewHelper;
 use In2code\Powermail\Domain\Model\Answer;
-use In2code\Powermail\Utility\Div;
+use In2code\Powermail\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -45,7 +45,7 @@ abstract class AbstractExporter
 	/**
 	 * @var GetPageNameFromUidViewHelper
 	 */
-	protected $getPageNamerFromUid = null;
+	protected $getPageNameFromUid = null;
 
 	/**
 	 * @var UnderscoredToLowerCamelCaseViewHelper
@@ -166,7 +166,7 @@ abstract class AbstractExporter
 		$value = $answer['value'];
 
 		// if serialized, change to array
-		if (Div::isJsonArray($value)) {
+		if (ArrayUtility::isJsonArray($value)) {
 			// only if type multivalue or upload
 			if ($answer['value_type'] == 1 || $answer['value_type'] == 3) {
 				$value = json_decode($value, TRUE);

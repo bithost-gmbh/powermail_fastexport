@@ -1,9 +1,6 @@
 <?php
 namespace Bithost\PowermailFastexport\Exporter;
 
-use In2code\Powermail\Domain\Model\Answer;
-use In2code\Powermail\Domain\Model\Mail;
-use In2code\Powermailextended\Domain\Model\Field;
 
 class CsvExporter extends AbstractExporter
 {
@@ -63,7 +60,7 @@ class CsvExporter extends AbstractExporter
             if ($this->isNumber->render($fieldUid)) {
                 $data[] = $this->getFieldLabelFromUid->render($fieldUid);
             } else {
-                $data[] = $this->translate('\In2code\Powermail\Domain\Model\Mail.' . $this->underscoredToLowerCamelCase->render($fieldUid));
+                $data[] = $this->translate('\\In2code\\Powermail\\Domain\\Model\\Mail.' . $this->underscoredToLowerCamelCase->render($fieldUid));
             }
         }
 

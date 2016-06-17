@@ -1,9 +1,6 @@
 <?php
 namespace Bithost\PowermailFastexport\Exporter;
 
-use In2code\Powermail\Domain\Model\Answer;
-use In2code\Powermail\Domain\Model\Mail;
-use In2code\Powermailextended\Domain\Model\Field;
 
 class XlsExporter extends AbstractExporter
 {
@@ -90,7 +87,7 @@ class XlsExporter extends AbstractExporter
 			if ($this->isNumber->render($fieldUid)) {
 				$result .= $this->getFieldLabelFromUid->render($fieldUid);
 			} else {
-				$result .= $this->translate('\In2code\Powermail\Domain\Model\Mail.' . $this->underscoredToLowerCamelCase->render($fieldUid));
+				$result .= $this->translate('\\In2code\\Powermail\\Domain\\Model\\Mail.' . $this->underscoredToLowerCamelCase->render($fieldUid));
 			}
 
 			$result .= '</th>';
