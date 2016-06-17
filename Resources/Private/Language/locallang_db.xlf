@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-06-17T09:01:36Z" product-name="powermail_fastexport">
+		<header/>
+		<body>
+			<trans-unit id="tx_powermailfastexport_domain_model_module">
+				<source>Module</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
