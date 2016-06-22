@@ -29,16 +29,6 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
      */
     public function exportXlsAction() {
 
-        if(!empty($this->settings['maxExecutionTime']))
-        {
-            ini_set('max_execution_time', (int)$this->settings['maxExecutionTime']);
-        }
-        if(!empty($this->settings['memoryLimit']))
-        {
-            ini_set('memory_limit', $this->settings['memoryLimit']);
-        }
-
-
         $mails = $this->getMailsAsArray();
         /** @var \Bithost\PowermailFastexport\Exporter\XlsExporter $xlsExporter */
         $xlsExporter = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\Exporter\\XlsExporter', $this->objectManager);
@@ -63,15 +53,6 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
      */
     public function exportCsvAction() {
 
-        if(!empty($this->settings['maxExecutionTime']))
-        {
-            ini_set('max_execution_time', (int)$this->settings['maxExecutionTime']);
-        }
-        if(!empty($this->settings['memoryLimit']))
-        {
-            ini_set('memory_limit', $this->settings['memoryLimit']);
-        }
-
         $mails = $this->getMailsAsArray();
         /** @var \Bithost\PowermailFastexport\Exporter\CsvExporter $csvExporter */
         $csvExporter = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\Exporter\\CsvExporter', $this->objectManager);
@@ -95,6 +76,15 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
      * @return array
      */
     private function getMailsAsArray() {
+        if(!empty($this->settings['maxExecutionTime']))
+        {
+            ini_set('max_execution_time', (int)$this->settings['maxExecutionTime']);
+        }
+        if(!empty($this->settings['memoryLimit']))
+        {
+            ini_set('memory_limit', $this->settings['memoryLimit']);
+        }
+
         $dbMails = $this->mailRepository->findAllInPidRaw($this->id, $this->settings, $this->piVars);
         $mails = array();
 
