@@ -23,6 +23,18 @@ use In2code\Powermail\Utility\StringUtility;
 class ModuleController extends \In2code\Powermail\Controller\ModuleController
 {
     /**
+     * @var \Bithost\PowermailFastexport\Domain\Repository\MailRepository
+     * @inject
+     */
+    protected $mailRepository;
+
+    /**
+     * @var \Bithost\PowermailFastexport\Domain\Repository\AnswerRepository
+     * @inject
+     */
+    protected $answerRepository;
+
+    /**
      * Export Action for XLS Files
      *
      * @return String
