@@ -13,14 +13,14 @@ if (!defined('TYPO3_MODE')) {
  * Add XCLASS definitions
  *
  */
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['Bithost\\PowermailFastexport\\Controller\\ModuleController'] = array(
-    'className' => 'In2code\\Powermail\\Controller\\ModuleController'
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['In2code\\Powermail\\Controller\\ModuleController'] = array(
+    'className' => 'Bithost\\PowermailFastexport\\Controller\\ModuleController'
 );
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['Bithost\\PowermailFastexport\\Domain\\Repository\\AnswerRepository'] = array(
-    'className' => 'In2code\\Powermail\\Domain\\Repository\\AnswerRepository'
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['In2code\\Powermail\\Domain\\Repository\\AnswerRepository'] = array(
+    'className' => 'Bithost\\PowermailFastexport\\Domain\\Repository\\AnswerRepository'
 );
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['Bithost\\PowermailFastexport\\Domain\\Repository\\MailRepository'] = array(
-    'className' => 'In2code\\Powermail\\Domain\\Repository\\MailRepository'
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['In2code\\Powermail\\Domain\\Repository\\MailRepository'] = array(
+    'className' => 'Bithost\\PowermailFastexport\\Domain\\Repository\\MailRepository'
 );
