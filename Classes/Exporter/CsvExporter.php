@@ -20,10 +20,10 @@ class CsvExporter extends AbstractExporter
     {
         $output = '';
 
-        $output .= self::arrayToCsv($this->renderHeader($fieldUids), false, self::CSV_DELIMITER, self::CSV_ENCLOSURE);
+        $output .= self::rowArrayToCsv($this->renderHeader($fieldUids), self::CSV_DELIMITER, self::CSV_ENCLOSURE);
 
         foreach ($mails as $mail) {
-            $output .= self::arrayToCsv($this->renderRecord($mail, $fieldUids), false, self::CSV_DELIMITER, self::CSV_ENCLOSURE);
+            $output .= self::rowArrayToCsv($this->renderRecord($mail, $fieldUids), self::CSV_DELIMITER, self::CSV_ENCLOSURE);
         }
 
         return $output;
@@ -32,7 +32,7 @@ class CsvExporter extends AbstractExporter
     /**
      * @param array $mail
      * @param array $fieldUids
-     * @return string
+     * @return array
      */
     protected function renderRecord(array &$mail, array $fieldUids)
     {
@@ -72,40 +72,29 @@ class CsvExporter extends AbstractExporter
      * By Sergey Gurevich.
      * Ref. http://www.codehive.net/PHP-Array-to-CSV-1.html
      *
-     * @param array $array array to be converted to csv
-     * @param bool $headerRow whether to print the array keys as the first row
+     * @param array $row array to be converted to csv
      * @param string $columnSeparator column separator
      * @param string $quote quote character
      * @param string $rowSeparator row separator
      *
      * @return string
      */
-    static function arrayToCsv(array $array, $headerRow = true, $columnSeparator = ",", $quote = '"', $rowSeparator = "\n")
+    static function rowArrayToCsv(array $row, $columnSeparator = ",", $quote = '"', $rowSeparator = "\n")
     {
         $output = '';
-        if (!is_array($array) or !is_array($array[0])) {
+        if (!is_array($row)) {
             return false;
         }
 
-        //Header row.
-        if ($headerRow) {
-            foreach ($array[0] as $key => $value) {
-                //Escaping quotes
-                $key = str_replace($quote, $quote . $quote, $key);
-                $output .= $columnSeparator . $quote . $key . $quote;
-            }
-            $output = substr($output, 1) . $rowSeparator;
+        $tmp = '';
+        $i = 0;
+        foreach ($row as $key => $value) {
+            //Escaping quotes
+            $value = str_replace($quote, $quote . $quote, $value);
+            $output .= ($i>0 ? $columnSeparator:'') . $quote . $value . $quote;
+            ++$i;
         }
-        //Data rows.
-        foreach ($array as $row) {
-            $tmp = '';
-            foreach ($row as $key => $value) {
-                //Escaping quotes
-                $value = str_replace($quote, $quote . $quote, $value);
-                $output .= $columnSeparator . $quote . $value . $quote;
-            }
-            $output .= substr($tmp, 1) . $rowSeparator;
-        }
+        $output .= $tmp . $rowSeparator;
 
         return $output;
     }

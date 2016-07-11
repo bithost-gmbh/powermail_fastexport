@@ -68,14 +68,14 @@ abstract class AbstractExporter
 	public function __construct(ObjectManager $objectManager)
 	{
 		$this->objectManager = $objectManager;
-		$this->isNumber = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Condition\IsNumberViewHelper');
-		$this->isArray = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Condition\IsArrayViewHelper');
-		$this->isDateTimeVariableInVariable = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Condition\IsDateTimeVariableInVariableViewHelper');
-		$this->date = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Format\DateViewHelper');
-		$this->getFieldLabelFromUid = $this->objectManager->get('Bithost\PowermailFastexport\MockViewHelpers\Getter\GetFieldLabelFromUidViewHelper');
-		$this->getPageNamerFromUid = $this->objectManager->get('Bithost\PowermailFastexport\MockViewHelpers\Getter\GetPageNameFromUidViewHelper');
-		$this->underscoredToLowerCamelCase = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\String\UnderscoredToLowerCamelCaseViewHelper');
-		$this->variableInVariable = GeneralUtility::makeInstance('Bithost\PowermailFastexport\MockViewHelpers\Misc\VariableInVariableViewHelper');
+		$this->isNumber = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\MockViewHelpers\\Condition\\IsNumberViewHelper');
+		$this->isArray = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\MockViewHelpers\\Condition\\IsArrayViewHelper');
+		$this->isDateTimeVariableInVariable = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\MockViewHelpers\\Condition\\IsDateTimeVariableInVariableViewHelper');
+		$this->date = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\MockViewHelpers\\Format\\DateViewHelper');
+		$this->getFieldLabelFromUid = $this->objectManager->get('Bithost\\PowermailFastexport\\MockViewHelpers\\Getter\\GetFieldLabelFromUidViewHelper');
+		$this->getPageNamerFromUid = $this->objectManager->get('Bithost\\PowermailFastexport\\MockViewHelpers\\Getter\\GetPageNameFromUidViewHelper');
+		$this->underscoredToLowerCamelCase = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\MockViewHelpers\\String\\UnderscoredToLowerCamelCaseViewHelper');
+		$this->variableInVariable = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\MockViewHelpers\\Misc\\VariableInVariableViewHelper');
 	}
 
 	/**
