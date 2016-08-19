@@ -23,6 +23,11 @@ Git Repository
 
 https://github.com/bithost-gmbh/powermail_fastexport
 
+TER
+---
+
+https://typo3.org/extensions/repository/view/powermail_fastexport
+
 Contact
 -------
 
