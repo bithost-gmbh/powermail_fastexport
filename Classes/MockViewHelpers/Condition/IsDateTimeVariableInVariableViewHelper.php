@@ -27,8 +27,6 @@ namespace Bithost\PowermailFastexport\MockViewHelpers\Condition;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***/
 
-use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
-
 /**
  * Is {outer.{inner}} a datetime?
  *
@@ -45,6 +43,7 @@ class IsDateTimeVariableInVariableViewHelper {
 	 * @return bool
 	 */
 	public function render($obj, $prop) {
-		return is_a(ObjectAccess::getProperty($obj, $prop), '\DateTime');
+		//DateViewHelper takes care of creating a DateTime object out of timestamps
+		return in_array(strtolower($prop), ['time', 'crdate']);
 	}
 }
