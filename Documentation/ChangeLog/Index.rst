@@ -11,6 +11,11 @@
 ChangeLog
 =========
 
+1.0.2 (2018-05-25)
+------------------
+
+* Adds compatibility for new powermail and typo3 versions
+
 1.0.1 (2018-04-17)
 ------------------
 
