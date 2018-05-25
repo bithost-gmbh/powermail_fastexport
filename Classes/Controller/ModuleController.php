@@ -1,8 +1,9 @@
 <?php
 namespace Bithost\PowermailFastexport\Controller;
 
+use Bithost\PowermailFastexport\Domain\Repository\AnswerRepository;
+use Bithost\PowermailFastexport\Domain\Repository\MailRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 use In2code\Powermail\Utility\StringUtility;
 
 /***
@@ -36,18 +37,6 @@ use In2code\Powermail\Utility\StringUtility;
  */
 class ModuleController extends \In2code\Powermail\Controller\ModuleController
 {
-    /**
-     * @var \Bithost\PowermailFastexport\Domain\Repository\MailRepository
-     * @inject
-     */
-    protected $mailRepository;
-
-    /**
-     * @var \Bithost\PowermailFastexport\Domain\Repository\AnswerRepository
-     * @inject
-     */
-    protected $answerRepository;
-
     /**
      * Export Action for XLS Files
      *
@@ -111,14 +100,16 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
             ini_set('memory_limit', $this->settings['memoryLimit']);
         }
 
-        $dbMails = $this->mailRepository->findAllInPidRaw($this->id, $this->settings, $this->piVars);
+        $mailRepository = $this->objectManager->get(MailRepository::class);
+        $dbMails = $mailRepository->findAllInPidRaw($this->id, $this->settings, $this->piVars);
         $mails = array();
 
         foreach ($dbMails as $mail) {
             $mails[$mail['uid']] = $mail;
         }
 
-        $answers = $this->answerRepository->findByMailUidsRaw(array_keys($mails));
+        $answerRepository = $this->objectManager->get(AnswerRepository::class);
+        $answers = $answerRepository->findByMailUidsRaw(array_keys($mails));
 
         foreach ($answers as $answer) {
             if (!is_array($mails[$answer['mail']]['answers'])) {
