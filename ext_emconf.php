@@ -22,7 +22,7 @@ This is useful if you have many records to be exported.',
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '1.0.2',
+    'version' => '1.0.3',
     'constraints' => [
         'depends' => [
             'typo3' => '7.6.0-9.5.99',
