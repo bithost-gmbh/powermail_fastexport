@@ -23,6 +23,11 @@ Git Repository
 
 https://github.com/bithost-gmbh/powermail_fastexport
 
+Packagist
+---------
+
+https://packagist.org/packages/bithost-gmbh/powermail_fastexport
+
 TER
 ---
 
