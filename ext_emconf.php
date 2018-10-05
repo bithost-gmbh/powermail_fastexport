@@ -25,8 +25,8 @@ This is useful if you have many records to be exported.',
     'version' => '1.0.3',
     'constraints' => [
         'depends' => [
-            'typo3' => '7.6.0-9.5.99',
-            'powermail' => '3.2.0-6.99.99',
+            'typo3' => '6.2.0-9.5.99',
+            'powermail' => '2.25.0-6.99.99',
         ],
         'conflicts' => [],
         'suggests' => [],
