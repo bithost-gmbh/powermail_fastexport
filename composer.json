@@ -1,7 +1,7 @@
 {
   "name": "bithost-gmbh/powermail_fastexport",
   "type": "typo3-cms-extension",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "GPL-3.0",
   "description": "Extends the powermail standard export for faster export to .xlsx and .csv files.",
   "keywords": ["powermail", "export", "fast", "faster", "csv", "xls"],
