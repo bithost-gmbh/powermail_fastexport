@@ -43,6 +43,7 @@ class AnswerRepository extends \In2code\Powermail\Domain\Repository\AnswerReposi
 
     public function findByMailUidsRaw(array $mailUids) {
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
 
         $query->matching(
             $query->in('mail', $mailUids)
