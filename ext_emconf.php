@@ -22,11 +22,11 @@ This is useful if you have many records to be exported.',
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '1.0.4',
+    'version' => '1.0.5',
     'constraints' => [
         'depends' => [
             'typo3' => '6.2.0-9.5.99',
-            'powermail' => '2.25.0-6.99.99',
+            'powermail' => '2.25.0-7.99.99',
         ],
         'conflicts' => [],
         'suggests' => [],
