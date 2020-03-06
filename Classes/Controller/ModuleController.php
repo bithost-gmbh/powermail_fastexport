@@ -100,6 +100,7 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
             ini_set('memory_limit', $this->settings['memoryLimit']);
         }
 
+        /** @var MailRepository $mailRepository */
         $mailRepository = $this->objectManager->get(MailRepository::class);
         $dbMails = $mailRepository->findAllInPidRaw($this->id, $this->settings, $this->piVars);
         $mails = array();
@@ -108,6 +109,7 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
             $mails[$mail['uid']] = $mail;
         }
 
+        /** @var AnswerRepository $answerRepository */
         $answerRepository = $this->objectManager->get(AnswerRepository::class);
         $answers = $answerRepository->findByMailUidsRaw(array_keys($mails));
 
