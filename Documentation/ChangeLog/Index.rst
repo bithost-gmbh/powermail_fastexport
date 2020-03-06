@@ -11,6 +11,22 @@
 ChangeLog
 =========
 
+1.0.5 (2020-03-06)
+------------------
+
+* Updates powermail version dependency
+* Fixes errors related to storage page check, (Thanks @georgringer)
+
+1.0.4 (2018-10-05)
+------------------
+
+* Updates constraints
+
+1.0.3 (2018-06-05)
+------------------
+
+* Adds composer.json
+
 1.0.2 (2018-05-25)
 ------------------
 
