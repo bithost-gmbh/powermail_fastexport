@@ -3,30 +3,37 @@
   "type": "typo3-cms-extension",
   "license": "GPL-3.0",
   "description": "Extends the powermail standard export for faster export to .xlsx and .csv files.",
-  "keywords": ["powermail", "export", "fast", "faster", "csv", "xls"],
+  "keywords": [
+	"powermail",
+	"export",
+	"fast",
+	"faster",
+	"csv",
+	"xls"
+  ],
   "homepage": "https://github.com/bithost-gmbh/powermail_fastexport",
   "authors": [
-    {
-      "name": "Markus Mächler",
-      "email": "markus.maechler@bithost.ch"
-    },
-    {
-      "name": "Esteban Marin",
-      "email": "esteban.marin@bithost.ch"
-    }
+	{
+	  "name": "Markus Mächler",
+	  "email": "markus.maechler@bithost.ch"
+	},
+	{
+	  "name": "Esteban Marin",
+	  "email": "esteban.marin@bithost.ch"
+	}
   ],
   "require": {
-	  "typo3/cms-core": "^10.4",
-    "in2code/powermail": "^8"
+	"typo3/cms-core": "^10.4",
+	"in2code/powermail": "^8"
   },
   "extra": {
-	 "typo3/cms": {
+	"typo3/cms": {
 	  "extension-key": "powermail_fastexport"
-	 }
+	}
   },
   "autoload": {
-    "psr-4": {
-      "Bithost\\PowermailFastexport\\": "Classes"
-    }
+	"psr-4": {
+	  "Bithost\\PowermailFastexport\\": "Classes"
+	}
   }
 }

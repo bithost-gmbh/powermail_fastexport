@@ -1,10 +1,14 @@
 <?php
+
 namespace Bithost\PowermailFastexport\Controller;
 
 use Bithost\PowermailFastexport\Domain\Repository\AnswerRepository;
 use Bithost\PowermailFastexport\Domain\Repository\MailRepository;
+use Bithost\PowermailFastexport\Exporter\CsvExporter;
+use Bithost\PowermailFastexport\Exporter\XlsExporter;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use In2code\Powermail\Utility\StringUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 
 /***
  *
@@ -42,15 +46,16 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
      *
      * @return String
      */
-    public function exportXlsAction() {
+    public function exportXlsAction(): void
+    {
 
         $mails = $this->getMailsAsArray();
         /** @var \Bithost\PowermailFastexport\Exporter\XlsExporter $xlsExporter */
-        $xlsExporter = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\Exporter\\XlsExporter', $this->objectManager);
+        $xlsExporter = GeneralUtility::makeInstance(XlsExporter::class, $this->objectManager, new RenderingContext());
         $fieldUids = GeneralUtility::trimExplode(
             ',',
             StringUtility::conditionalVariable($this->piVars['export']['fields'], ''),
-            TRUE
+            true
         );
         $fileName = StringUtility::conditionalVariable($this->settings['export']['filenameXls'], 'export.xls');
 
@@ -58,31 +63,7 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
         header('Content-Disposition: inline; filename="' . $fileName . '"');
         header('Pragma: no-cache');
 
-        return $xlsExporter->export($mails, $fieldUids);
-    }
-
-    /**
-     * Export Action for CSV Files
-     *
-     * @return String
-     */
-    public function exportCsvAction() {
-
-        $mails = $this->getMailsAsArray();
-        /** @var \Bithost\PowermailFastexport\Exporter\CsvExporter $csvExporter */
-        $csvExporter = GeneralUtility::makeInstance('Bithost\\PowermailFastexport\\Exporter\\CsvExporter', $this->objectManager);
-        $fieldUids = GeneralUtility::trimExplode(
-            ',',
-            StringUtility::conditionalVariable($this->piVars['export']['fields'], ''),
-            TRUE
-        );
-        $fileName = StringUtility::conditionalVariable($this->settings['export']['filenameCsv'], 'export.csv');
-
-        header('Content-Type: text/x-csv');
-        header('Content-Disposition: attachment; filename="' . $fileName . '"');
-        header('Pragma: no-cache');
-
-        return $csvExporter->export($mails, $fieldUids);
+        $this->response->appendContent($xlsExporter->export($mails, $fieldUids));
     }
 
     /**
@@ -90,20 +71,19 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
      *
      * @return array
      */
-    private function getMailsAsArray() {
-        if(!empty($this->settings['maxExecutionTime']))
-        {
+    private function getMailsAsArray()
+    {
+        if (!empty($this->settings['maxExecutionTime'])) {
             ini_set('max_execution_time', (int)$this->settings['maxExecutionTime']);
         }
-        if(!empty($this->settings['memoryLimit']))
-        {
+        if (!empty($this->settings['memoryLimit'])) {
             ini_set('memory_limit', $this->settings['memoryLimit']);
         }
 
         /** @var MailRepository $mailRepository */
         $mailRepository = $this->objectManager->get(MailRepository::class);
         $dbMails = $mailRepository->findAllInPidRaw($this->id, $this->settings, $this->piVars);
-        $mails = array();
+        $mails = [];
 
         foreach ($dbMails as $mail) {
             $mails[$mail['uid']] = $mail;
@@ -115,12 +95,36 @@ class ModuleController extends \In2code\Powermail\Controller\ModuleController
 
         foreach ($answers as $answer) {
             if (!is_array($mails[$answer['mail']]['answers'])) {
-                $mails[$answer['mail']]['answers'] = array();
+                $mails[$answer['mail']]['answers'] = [];
             }
             $mails[$answer['mail']]['answers'][$answer['uid']] = $answer;
         }
 
         return $mails;
+    }
+
+    /**
+     * Export Action for CSV Files
+     *
+     * @return String
+     */
+    public function exportCsvAction(): void
+    {
+        $mails = $this->getMailsAsArray();
+        /** @var \Bithost\PowermailFastexport\Exporter\CsvExporter $csvExporter */
+        $csvExporter = GeneralUtility::makeInstance(CsvExporter::class, $this->objectManager, new RenderingContext());
+        $fieldUids = GeneralUtility::trimExplode(
+            ',',
+            StringUtility::conditionalVariable($this->piVars['export']['fields'], ''),
+            true
+        );
+        $fileName = StringUtility::conditionalVariable($this->settings['export']['filenameCsv'], 'export.csv');
+
+        header('Content-Type: text/x-csv');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        header('Pragma: no-cache');
+
+        $this->response->appendContent($csvExporter->export($mails, $fieldUids));
     }
 
 }

@@ -11,6 +11,11 @@
 ChangeLog
 =========
 
+2.0.0 (2021-01-28)
+------------------
+
+* Updates TYPO3 & powermail version dependency
+
 1.0.5 (2020-03-06)
 ------------------
 

@@ -2,6 +2,8 @@
 
 namespace Bithost\PowermailFastexport\Domain\Repository;
 
+use In2code\Powermail\Domain\Model\Answer;
+
 /***
  *
  * This file is part of the "Powermail FastExport" Extension for TYPO3 CMS.
@@ -38,7 +40,7 @@ class AnswerRepository extends \In2code\Powermail\Domain\Repository\AnswerReposi
     public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
     {
         parent::__construct($objectManager);
-        $this->objectType = 'In2code\\Powermail\\Domain\\Model\\Answer';
+        $this->objectType = Answer::class;
     }
 
     public function findByMailUidsRaw(array $mailUids) {
