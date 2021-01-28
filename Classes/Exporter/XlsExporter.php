@@ -1,6 +1,8 @@
 <?php
 namespace Bithost\PowermailFastexport\Exporter;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /***
  *
  * This file is part of the "Powermail FastExport" Extension for TYPO3 CMS.
@@ -109,10 +111,11 @@ class XlsExporter extends AbstractExporter
 		foreach ($fieldUids as $fieldUid) {
 			$result .= '<th>';
 
-			if ($this->isNumber->render($fieldUid)) {
-				$result .= $this->getFieldLabelFromUid->render($fieldUid);
+			if (is_numeric($fieldUid)) {
+			    $this->getFieldLabelFromUid->setArguments(['uid' => (int)$fieldUid]);
+				$result .= $this->getFieldLabelFromUid->render();
 			} else {
-				$result .= $this->translate('\\In2code\\Powermail\\Domain\\Model\\Mail.' . $this->underscoredToLowerCamelCase->render($fieldUid));
+				$result .= $this->translate('\\In2code\\Powermail\\Domain\\Model\\Mail.' . GeneralUtility::underscoredToLowerCamelCase($fieldUid));
 			}
 
 			$result .= '</th>';

@@ -1,8 +1,5 @@
 <?php
-
-if (!defined('TYPO3_MODE')) {
-    die ('Access denied.');
-}
+defined('TYPO3_MODE') or die();
 
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
@@ -13,14 +10,14 @@ if (!defined('TYPO3_MODE')) {
  * Add XCLASS definitions
  *
  */
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['In2code\\Powermail\\Controller\\ModuleController'] = array(
-    'className' => 'Bithost\\PowermailFastexport\\Controller\\ModuleController'
-);
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Controller\ModuleController::class] = [
+    'className' => \Bithost\PowermailFastexport\Controller\ModuleController::class
+];
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['In2code\\Powermail\\Domain\\Repository\\AnswerRepository'] = array(
-    'className' => 'Bithost\\PowermailFastexport\\Domain\\Repository\\AnswerRepository'
-);
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Repository\AnswerRepository::class] = [
+    'className' => \Bithost\PowermailFastexport\Domain\Repository\AnswerRepository::class
+];
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['In2code\\Powermail\\Domain\\Repository\\MailRepository'] = array(
-    'className' => 'Bithost\\PowermailFastexport\\Domain\\Repository\\MailRepository'
-);
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\Domain\Repository\MailRepository::class] = [
+    'className' => \Bithost\PowermailFastexport\Domain\Repository\MailRepository::class
+];

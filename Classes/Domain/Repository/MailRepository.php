@@ -2,6 +2,7 @@
 
 namespace Bithost\PowermailFastexport\Domain\Repository;
 
+use In2code\Powermail\Domain\Model\Mail;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
 /***
@@ -40,7 +41,7 @@ class MailRepository extends \In2code\Powermail\Domain\Repository\MailRepository
     public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
     {
         parent::__construct($objectManager);
-        $this->objectType = 'In2code\\Powermail\\Domain\\Model\\Mail';
+        $this->objectType = Mail::class;
     }
 
     /**
